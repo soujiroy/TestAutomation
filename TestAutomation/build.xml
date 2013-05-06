@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TestAutomation" default="execute" basedir="./">
+	<property name="projectRoot" location="${basedir}" />
+	<property name="compile" value="${projectRoot}/classes" />
+	<taskdef resource="testngtasks"
+		classpath="${projectRoot}/lib/testng-6.8.jar" />
+	<path id="run.cp">
+		<fileset dir="${projectRoot}/lib" includes="*.jar" />
+	</path>
+	<target name="directory">
+		<mkdir dir="${compile}" />
+	</target>
+	<target name="compile" depends="directory">
+		<javac srcdir="src" destdir="${compile}" excludes="build.xml">
+			<classpath>
+				<pathelement path="${projectRoot}/lib/selenium-java-2.32.0.jar" />
+				<pathelement path="${projectRoot}/lib/selenium-server-standalone-2.32.0.jar" />
+				<pathelement path="${projectRoot}/lib/testng-6.8.jar" />
+			</classpath>
+		</javac>
+	</target>
+	<target name="execute" depends="compile">
+		<mkdir dir="${projectRoot}/AutoTest/report" />
+		<testng classpathref="run.cp" outputdir="${projectRoot}/AutoTest/report" haltOnfailure="true" >
+			<classpath>
+				<pathelement location="${compile}" />
+			</classpath>
+			<xmlfileset dir="${projectRoot}/AutoTest/testDefinitions"
+				includes="*" />
+		</testng>
+	</target>
+</project>

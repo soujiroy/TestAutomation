@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="YahooSuite" parallel="false">
+	<test name="Sanity">
+		<groups>
+			<dependencies>
+				<group name="yahoo.SearchResultTest" depends-on="yahoo.SearchTest" />
+			</dependencies>
+		</groups>
+		<packages>
+			<package name="yahoo" />
+		</packages>
+	</test>
+</suite> <!-- Suite -->

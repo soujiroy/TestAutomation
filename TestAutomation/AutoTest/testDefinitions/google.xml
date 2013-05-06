@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="GoogleSuite" parallel="false">
+	<test name="Sanity">
+		<groups>
+			<dependencies>
+				<group name="google.SearchResultTest" depends-on="google.SearchTest" />
+				<group name="google.SearchResultNextTest" depends-on="google.SearchResultTest" />
+			</dependencies>
+		</groups>
+		<classes>
+			<class name="google.SearchResultTest">
+				<parameter name="keyword" value="testng2" />
+			</class>
+			<class name="google.SearchResultNextTest" />
+			<class name="google.SearchTest">
+				<parameter name="keyword" value="testng" />
+			</class>
+		</classes>
+	</test>
+	<test name="Sanity2">
+		<classes>
+			<class name="google.SearchTest">
+				<parameter name="keyword" value="goo" />
+			</class>
+		</classes>
+	</test>
+</suite> <!-- Suite -->
